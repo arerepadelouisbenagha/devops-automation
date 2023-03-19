@@ -1,2 +1,2 @@
 # Jenkins-server
-Handles Jenkins Master Server Automation.
+- Handle different scenarios based for application deployments.
