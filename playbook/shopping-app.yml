@@ -1,7 +1,7 @@
 - hosts: webservers
   become: yes
   vars:
-    docker_image: elitesolutionsit/react-shopping-app:v1
+    docker_image: elitesolutionsit/react-shopping-app:v2
     container_name: react-shopping-app
     port_mapping:
       - "80:80"
