@@ -15,7 +15,7 @@
       debug: msg="{{ lookup('amazon.aws.aws_secret', 'dev/docker-login-secret', bypath=true) }}"
 
     - name: Get Docker Hub password from AWS Secrets Manager
-      aws_secretsmanager:
+      aws.secretsmanager_secret:
         region: us-east-1
         secret_id: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
       register: docker_secret
