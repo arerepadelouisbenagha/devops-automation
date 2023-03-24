@@ -2,6 +2,8 @@
 
 # Install packages
 sudo apt-get update
+sudo apt install -y python3-docker
+sudo apt-get install -y python-docker
 sudo apt-get -y install ca-certificates curl gnupg lsb-release
 
 sudo mkdir -m 0755 -p /etc/apt/keyrings
@@ -16,4 +18,3 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 
 sudo usermod -aG docker $USER
 newgrp docker 
-sudo apt install -y python3-docker
