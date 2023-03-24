@@ -6,7 +6,7 @@ pipeline {
         DOCKER_REPO = 'react-shopping-app'
         DOCKER_TAG = 'v1'
     }
-
+    
     stages {
         stage('git clone') {
             steps {

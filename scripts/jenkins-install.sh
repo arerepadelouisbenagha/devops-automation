@@ -7,6 +7,8 @@ sudo apt-get install -y software-properties-common
 sudo apt-add-repository ppa:ansible/ansible -y
 sudo apt-get -y update
 sudo apt-get install -y ansible
+sudo apt-get install -y python-docker
+sudo apt-get install -y python3-docker
 
 # docker install
 sudo apt-get update
