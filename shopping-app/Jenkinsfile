@@ -4,9 +4,9 @@ pipeline {
     environment {
         DOCKER_REGISTRY = 'elitesolutionsit'
         DOCKER_REPO = 'react-shopping-app'
-        DOCKER_TAG = 'v1'
+        DOCKER_TAG = 'v2'
     }
-    
+
     stages {
         stage('git clone') {
             steps {
