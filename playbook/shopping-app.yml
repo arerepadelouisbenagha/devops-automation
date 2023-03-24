@@ -6,20 +6,23 @@
     container_name: react-shopping-app
     port_mapping: "80:80"
     dockerhub_username: elitesolutionsit
-    dockerhub_secret: pafVbCat003B
-    # dockerhub_secret_arn: arn:aws:secretsmanager:us-east-1:375866976303:secret:docker-login-secret-A3pSos
   
   tasks:
+    - name: warn if access to the secret is denied
+      debug: msg="{{ lookup('amazon.aws.aws_secret', 'secret-denied', on_denied='warn')}}"
+    
+    - name: lookup secretsmanager secret in the current region
+    debug: msg="{{ lookup('amazon.aws.aws_secret', 'dev/docker-login-secret', bypath=true) }}"
+
     - name: Get Docker Hub password from AWS Secrets Manager
       aws_secretsmanager:
         region: us-east-1
-        secret_id: "{{ dockerhub_secret }}"
-        register: dockerhub_secret
+        secret_id: password: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
 
     - name: Log in to Docker Hub
       docker_login:
         username: "{{ dockerhub_username }}"
-        password: "{{ dockerhub_secret }}"
+        password: password: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
 
     - name: Pull Docker image
       docker_image:

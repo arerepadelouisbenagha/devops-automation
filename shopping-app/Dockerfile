@@ -1,5 +1,6 @@
 # Use an official Node.js runtime as a parent image
 FROM node:14-alpine As builder
+
 # Add metadata to the image with your name
 LABEL maintainer="Louis Benagha <support@tsr.com>"
 

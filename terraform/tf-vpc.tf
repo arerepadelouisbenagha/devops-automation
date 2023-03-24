@@ -27,6 +27,13 @@ module "vpc" {
       cidr_blocks = "76.198.149.152/32"
     },
     {
+      description = "Jenkins access from VPC"
+      from_port   = 80
+      to_port     = 80
+      protocol    = "tcp"
+      cidr_blocks = "76.198.149.152/32"
+    },
+    {
       description = "Mariadb access from VPC"
       from_port   = 3306
       to_port     = 3306

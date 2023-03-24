@@ -1,6 +1,6 @@
 resource "aws_instance" "jenkins-instance" {
   ami                    = data.aws_ami.ubuntu.id
-  instance_type          = "t2.micro"
+  instance_type          = "t2.medium"
   subnet_id              = module.vpc.public_subnet_id[0]
   vpc_security_group_ids = [module.vpc.security_group_id]
   key_name               = aws_key_pair.mykeypair.key_name

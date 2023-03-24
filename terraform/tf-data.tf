@@ -42,6 +42,6 @@ data "cloudinit_config" "app" {
   part {
     content_type = "text/x-shellscript"
     filename     = "app"
-    content = templatefile("../scripts/install.sh",{})
+    content      = templatefile("../scripts/install.sh", {})
   }
 }
