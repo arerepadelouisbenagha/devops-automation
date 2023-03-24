@@ -6,24 +6,14 @@
     port_mapping:
       - "80:80"
     dockerhub_username: elitesolutionsit
-  
+    dockerhub_username: "{{ lookup('jenkins_env', 'DOCKERHUB_USERNAME') }}"
+    dockerhub_password: "{{ lookup('jenkins', 'dockerhub-creds::password', 'username', lookup('jenkins_env', 'DOCKERHUB_USERNAME')) }}"
+
   tasks:
-    - name: warn if access to the secret is denied
-      debug: msg="{{ lookup('amazon.aws.aws_secret', 'secret-denied', on_denied='warn')}}"
-    
-    - name: lookup secretsmanager secret in the current region
-      debug: msg="{{ lookup('amazon.aws.aws_secret', 'dev/docker-login-secret', bypath=true) }}"
-
-    - name: Get Docker Hub password from AWS Secrets Manager
-      aws.secretsmanager_secret:
-        region: us-east-1
-        secret_id: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
-      register: docker_secret
-
     - name: Log in to Docker Hub
       docker_login:
         username: "{{ dockerhub_username }}"
-        password: "{{ docker_secret.secret_string }}"
+        password: "{{ dockerhub_password }}"
         
     - name: Pull Docker image
       docker_image:
