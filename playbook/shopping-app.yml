@@ -2,7 +2,7 @@
 - hosts: webservers
   become: yes
   vars:
-    docker_image: elitesolutionsit/react-shopping-app
+    docker_image: elitesolutionsit/react-shopping-app:v1
     container_name: react-shopping-app
     port_mapping: "80:80"
     dockerhub_username: elitesolutionsit
@@ -17,12 +17,12 @@
     - name: Get Docker Hub password from AWS Secrets Manager
       aws_secretsmanager:
         region: us-east-1
-        secret_id: password: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
+        secret_id: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
 
     - name: Log in to Docker Hub
       docker_login:
         username: "{{ dockerhub_username }}"
-        password: password: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
+        password: "{{ lookup('amazon.aws.aws_secret', 'docker-login-secret') }}"
 
     - name: Pull Docker image
       docker_image:
