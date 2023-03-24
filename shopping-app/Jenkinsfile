@@ -35,7 +35,7 @@ pipeline {
                     sh '''
                     # Get the hostname and public IP address of the machine
                     HOSTNAME=webservers
-                    IPADDR=$(curl -s ifconfig.me)
+                    IPADDR="44.214.143.139"
             
                     # Check if previous inventory entry exists and remove it if necessary
                     if grep -q "[$HOSTNAME]" /etc/ansible/hosts; then
