@@ -7,7 +7,7 @@
       - "80:80"
     dockerhub_username: elitesolutionsit
     # dockerhub_username: "{{ lookup('jenkins_env', 'DOCKERHUB_USERNAME') }}"
-    dockerhub_password: "{{ lookup('jenkins', 'dockerhub-creds::password', 'username', lookup('jenkins_env', 'DOCKERHUB_USERNAME')) }}"
+    dockerhub_password: "{{ lookup('jenkins', 'dockerhub-creds::password', 'username', lookup('env', 'DOCKERHUB_USERNAME')) }}"
 
   tasks:
     - name: Log in to Docker Hub
