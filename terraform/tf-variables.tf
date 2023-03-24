@@ -28,5 +28,5 @@ variable "AWS_ACCESS_KEY_ID" {
 
 variable "JENKINS_ADMIN" {
   type    = string
-  default = "jenkinstokenpassword"
+  default = "cicd-token"
 }

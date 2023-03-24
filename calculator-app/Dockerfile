@@ -28,5 +28,13 @@ COPY --from=builder /app/target/Calculator-1.0-SNAPSHOT.jar ./Calculator.jar
 # Expose a port if your application requires it (optional)
 EXPOSE 3000
 
+
+# Use the official Tomcat image as the base image for the final image
+FROM tomcat:9.0.55-jdk8-openjdk-slim-buster
+
+# Copy the WAR file from the build stage into the Tomcat webapps directory
+COPY --from=builder /app/target/Calculator-1.0-SNAPSHOT.jar /usr/local/tomcat/webapps/
+
 # Start the application on launch
-CMD ["java", "-jar", ".Calculator.jar"]
+CMD ["catalina.sh", "run"]
+

@@ -24,14 +24,14 @@ module "vpc" {
       from_port   = 8080
       to_port     = 8080
       protocol    = "tcp"
-      cidr_blocks = "209.214.68.238/32"
+      cidr_blocks = "76.198.149.152/32"
     },
     {
       description = "Mariadb access from VPC"
       from_port   = 3306
       to_port     = 3306
       protocol    = "tcp"
-      cidr_blocks = "209.214.68.238/32"
+      cidr_blocks = "76.198.149.152/32"
   }]
   security_group_egress = [{
     from_port   = 0
